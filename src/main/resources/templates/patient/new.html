@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Patient Form</title>
+</head>
+<body>
+<div>
+    <div><a href="/">Home</a></div>
+    <h1>Add New Patient Form</h1>
+<!--    <h3 th:text="${errors}"></h3>-->
+    <form action="/patient/add" method="post" th:object="${patient}">
+        <div>
+            <div> <label for="fullName">FullName</label></div>
+            <div><input id="fullName" name="fullName" th:value="${patient.fullName}" type="text"></div>
+        </div>
+        <div>
+            <div> <label for="emailAddress">EmailAddress</label></div>
+            <div><input id="emailAddress" name="emailAddress" th:value="${patient.emailAddress}" type="text"></div>
+        </div>
+        <div>
+            <div> <label for="contactPhoneNumber">ContactPhoneNumber</label></div>
+            <div><input id="contactPhoneNumber" name="contactPhoneNumber" th:value="${patient.contactPhoneNumber}" type="text"></div>
+        </div>
+        <div>
+            <div><label for="patientNumber">PatientNumber</label></div>
+            <div><input id="patientNumber" name="patientNumber" th:value="${patient.patientNumber}" type="text"></div>
+            <div>
+                <span style="color: red" th:if="${#fields.hasErrors('patientNumber')}" th:errors="*{patientNumber}"></span>
+            </div>
+        </div>
+        <div>
+            <label for="dateOfBirth">dateOfBirth</label>
+            <input id="dateOfBirth" name="dateOfBirth" th:value="${patient.dateOfBirth}" type="date">
+        </div>
+
+        <div>
+            <div> <label for="isAnOutPatient">IsAnOutPatient</label></div>
+            <select name="isAnOutPatient" id="isAnOutPatient">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div>
+            <button id="btnSave" type="submit">Save Patient</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
